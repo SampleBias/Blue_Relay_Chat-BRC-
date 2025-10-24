@@ -1,0 +1,37 @@
+[Unit]
+Description=Blue Relay Chat RPi 4 Client
+Documentation=https://github.com/blue-relay-chat/blue-relay-chat-rpi4
+After=network.target bluetooth.target
+Wants=network.target bluetooth.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/opt/blue-relay-chat
+ExecStart=/opt/blue-relay-chat/venv/bin/python -m bitchat.main
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=blue-relay-chat
+
+# Environment variables
+Environment=PYTHONPATH=/opt/blue-relay-chat
+Environment=BRC_CONFIG_DIR=/home/pi/.config/blue-relay-chat
+Environment=BRC_DATA_DIR=/home/pi/.local/share/blue-relay-chat
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/home/pi/.local/share/blue-relay-chat /home/pi/.config/blue-relay-chat /var/log/blue-relay-chat
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+[Install]
+WantedBy=multi-user.target
