@@ -66,6 +66,7 @@ DEFAULT_CLEANUP_INTERVAL_HOURS: Final[int] = 24
 # Message constants
 MAX_MESSAGE_SIZE: Final[int] = 65536  # 64KB
 MAX_MESSAGE_AGE_DAYS: Final[int] = 30
+COMPRESSION_THRESHOLD: Final[int] = 100  # 100 bytes
 
 # Protocol constants
 PROTOCOL_VERSION: Final[str] = "1.0"

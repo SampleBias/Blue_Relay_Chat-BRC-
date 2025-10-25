@@ -11,13 +11,13 @@ import os
 import sys
 from typing import Optional, Union
 
-from ..constants import DEFAULT_LOG_FILE_SIZE, DEFAULT_DATA_DIR
+from ..constants import DEFAULT_DATA_DIR
 
 
 def setup_logging(
     level: Union[str, int] = "INFO",
     log_file: Optional[str] = None,
-    max_bytes: int = DEFAULT_LOG_FILE_SIZE,
+    max_bytes: int = 10 * 1024 * 1024,  # Default to 10MB
     backup_count: int = 5,
     console_output: bool = True,
 ) -> logging.Logger:
@@ -113,7 +113,7 @@ def set_log_level(level: Union[str, int]) -> None:
 def add_log_file(
     log_file: str,
     level: Union[str, int] = "INFO",
-    max_bytes: int = DEFAULT_LOG_FILE_SIZE,
+    max_bytes: int = 10 * 1024 * 1024,  # Default to 10MB
     backup_count: int = 5,
 ) -> None:
     """

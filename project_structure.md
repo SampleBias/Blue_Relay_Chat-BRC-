@@ -58,6 +58,11 @@ blue-relay-chat-rpi4/
     │   ├── commands.py                # Command parsing and execution
     │   ├── display.py                 # Screen rendering and formatting
     │   └── widgets.py                 # Reusable UI components
+    ├── gui/
+    │   ├── __init__.py
+    │   ├── display_driver.py           # 1.44-inch LCD display driver
+    │   ├── input_handler.py           # Toggle/button input handling
+    │   └── small_screen_gui.py      # Main small screen GUI
     ├── core/
     │   ├── __init__.py
     │   ├── controller.py              # Core application controller
@@ -154,6 +159,7 @@ blue-relay-chat-rpi4/
 - **scripts/install_rpi_zero2w.sh**: Raspberry Pi Zero 2 W specific installation script
 - **scripts/install_orangepi.sh**: Orange Pi specific installation script
 - **config_rpi_zero2w.ini**: Raspberry Pi Zero 2 W optimized configuration
+- **config_small_screen.ini**: Small screen GUI optimized configuration
 - **requirements.txt**: Python package dependencies
 
 ## Module Dependencies
@@ -239,9 +245,10 @@ graph TD
 2. systemd service configuration
 3. Hardware-specific optimizations
 4. Multi-platform support implementation
-5. Documentation completion
-6. Final testing and validation
-7. Release preparation
+5. Small screen GUI development
+6. Documentation completion
+7. Final testing and validation
+8. Release preparation
 
 ## Development Guidelines
 
