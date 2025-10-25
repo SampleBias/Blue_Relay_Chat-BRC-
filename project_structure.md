@@ -14,9 +14,12 @@ blue-relay-chat-rpi4/
 ├── main.py                            # Application entry point
 ├── systemd/
 │   ├── blue-relay-chat.service       # systemd service configuration
+│   ├── blue-relay-chat-rpi-zero2w.service  # Raspberry Pi Zero 2 W service configuration
 │   └── blue-relay-chat-user.service  # Per-user service configuration
 ├── scripts/
 │   ├── install.sh                    # Installation script
+│   ├── install_rpi_zero2w.sh        # Raspberry Pi Zero 2 W installation script
+│   ├── install_orangepi.sh           # Orange Pi installation script
 │   ├── uninstall.sh                  # Uninstallation script
 │   └── emergency_wipe.sh             # Emergency data wipe script
 ├── tests/
@@ -145,8 +148,12 @@ blue-relay-chat-rpi4/
 
 ### Deployment
 
-- **systemd/bitchat.service**: systemd service for system-wide installation
-- **scripts/install.sh**: Installation automation script
+- **systemd/blue-relay-chat.service**: systemd service for system-wide installation
+- **systemd/blue-relay-chat-rpi-zero2w.service**: systemd service optimized for Raspberry Pi Zero 2 W
+- **scripts/install.sh**: General installation automation script
+- **scripts/install_rpi_zero2w.sh**: Raspberry Pi Zero 2 W specific installation script
+- **scripts/install_orangepi.sh**: Orange Pi specific installation script
+- **config_rpi_zero2w.ini**: Raspberry Pi Zero 2 W optimized configuration
 - **requirements.txt**: Python package dependencies
 
 ## Module Dependencies
@@ -230,9 +237,11 @@ graph TD
 ### Phase 5: Deployment (Week 9-10)
 1. Packaging and installation
 2. systemd service configuration
-3. Documentation completion
-4. Final testing and validation
-5. Release preparation
+3. Hardware-specific optimizations
+4. Multi-platform support implementation
+5. Documentation completion
+6. Final testing and validation
+7. Release preparation
 
 ## Development Guidelines
 

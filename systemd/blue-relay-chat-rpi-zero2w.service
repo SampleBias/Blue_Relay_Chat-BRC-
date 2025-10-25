@@ -1,0 +1,57 @@
+[Unit]
+Description=Blue Relay Chat RPi Zero 2W Service
+Documentation=https://github.com/blue-relay-chat/blue-relay-chat-rpi4
+After=network.target bluetooth.target
+Wants=network.target bluetooth.target
+
+[Service]
+# User and group settings
+User=pi
+Group=pi
+Type=simple
+
+# Resource limits optimized for Raspberry Pi Zero 2 W (512MB RAM)
+MemoryLimit=200M
+MemoryHigh=180M
+CPUQuota=80%
+TasksMax=100
+
+# Environment settings
+Environment="PYTHONUNBUFFERED=1"
+Environment="BRC_HARDWARE=rpi-zero2w"
+WorkingDirectory=/opt/blue-relay-chat
+
+# Virtual environment
+ExecStartPre=/bin/bash -c 'source /opt/blue-relay-chat/venv/bin/activate'
+ExecStart=/opt/blue-relay-chat/venv/bin/python /opt/blue-relay-chat/main.py
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Restart policy
+Restart=always
+RestartSec=30
+StartLimitInterval=300
+StartLimitBurst=3
+
+# Security settings
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/blue-relay-chat /home/pi/.local/share/blue-relay-chat /var/log/blue-relay-chat /home/pi/.config/blue-relay-chat
+PrivateTmp=true
+
+# Device access for Bluetooth
+DeviceAllow=/dev/rfkill /dev/vhci
+DevicePolicy=auto
+
+# Network access
+RestrictAddressFamilies=AF_INET AF_INET6 AF_BLUETOOTH
+IPAddressDeny=any
+IPAddressAllow=localhost
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=blue-relay-chat
+
+[Install]
+WantedBy=multi-user.target

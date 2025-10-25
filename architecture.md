@@ -362,21 +362,30 @@ erDiagram
 - **GPIO**: 40-pin GPIO header
 - **Storage**: MicroSD card slot
 
-### 12.2 Orange Pi Zero 2W
+### 12.2 Raspberry Pi Zero 2 W
+- **CPU**: Broadcom BCM2710A1, Quad-core Cortex-A53 (ARMv8) 1.0GHz
+- **RAM**: 512MB LPDDR2 SDRAM
+- **Connectivity**: 2.4GHz IEEE 802.11n wireless, Bluetooth 5.0, BLE
+- **GPIO**: 40-pin GPIO header
+- **Storage**: MicroSD card slot
+- **Form Factor**: Compact 65mm x 30mm board
+
+### 12.3 Orange Pi Zero 2W
 - **CPU**: Allwinner H618, Quad-core ARM Cortex-A53 @ 1.5GHz
 - **RAM**: 512MB or 1GB LPDDR4
 - **Connectivity**: 2.4GHz and 5GHz WiFi, Bluetooth 5.0, BLE
 - **GPIO**: 26-pin GPIO header
 - **Storage**: eMMC module (up to 64GB) + microSD card slot
 
-### 12.3 Performance Considerations
+### 12.4 Performance Considerations
 The implementation includes hardware-specific optimizations:
-- **Memory Management**: Adjusted queue sizes and connection limits for Orange Pi's lower RAM
+- **Memory Management**: Adjusted queue sizes and connection limits for each platform's RAM constraints
 - **GPIO Configuration**: Different pin mappings for emergency wipe functionality
 - **Bluetooth Stack**: Configuration adjustments for different Bluetooth controllers
 - **Power Management**: Optimized settings for each hardware platform
 - **Batching**: Group operations where possible
 - **Caching**: Peer information and routing tables
+- **Hardware Detection**: Automatic detection and configuration optimization for supported platforms
 
 ## 12. Security Considerations
 

@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional, Union
 from ..exceptions import ConfigurationError
 from .defaults import DEFAULT_CONFIG
 from .validation import ConfigValidator
+from ..utils.hardware_detection import get_hardware_detector
 
 
 class ConfigManager:
@@ -28,6 +29,7 @@ class ConfigManager:
         self._config: Dict[str, Dict[str, Any]] = {}
         self._config_file = config_file or self._find_config_file()
         self._validator = ConfigValidator()
+        self._hardware_detector = get_hardware_detector()
         
         # Load configuration from all sources
         self._load_configuration()
